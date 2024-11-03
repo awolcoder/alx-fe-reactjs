@@ -54,7 +54,7 @@ function App() {
     );
 }
 
-export default App;
+
 
 // Task 2
 // src/App.jsx
@@ -73,7 +73,7 @@ function App() {
     );
 }
 
-export default App;
+
 
 
 // Task 3
