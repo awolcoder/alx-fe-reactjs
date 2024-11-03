@@ -1,17 +1,3 @@
-// src/App.jsx
-import React from 'react';
-import WelcomeMessage from './components/WelcomeMessage'; // Ensure this line is added
-
-function App() {
-    return (
-        <div>
-            <WelcomeMessage /> {/* Ensure this component is included here */}
-        </div>
-    );
-}
-
-export default App;
-
 // PREVIOS CODE OF App.jsx
 
 // import { useState } from 'react'
@@ -53,3 +39,38 @@ export default App;
 
 // export default App
 
+
+
+// Task 1
+// src/App.jsx
+import React from 'react';
+import WelcomeMessage from './components/WelcomeMessage'; // Ensure this line is added
+
+function App() {
+    return (
+        <div>
+            <WelcomeMessage /> {/* Ensure this component is included here */}
+        </div>
+    );
+}
+
+export default App;
+
+// Task 2
+// src/App.jsx
+import React from 'react';
+import Header from './components/Header';
+import MainContent from './components/MainContent';
+import Footer from './components/Footer';
+
+function App() {
+    return (
+        <div>
+            <Header />
+            <MainContent />
+            <Footer />
+        </div>
+    );
+}
+
+export default App;
