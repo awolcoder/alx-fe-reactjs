@@ -6,6 +6,8 @@ const useRecipeStore = create((set) => ({
   filteredRecipes: [], // Recipes filtered based on searchTerm
   searchTerm: '', // Term entered by the user for searching
   filteredRecipes: [], // Recipes filtered based on searchTerm
+  favorites: [], // Array to store favorite recipe IDs
+  recommendations: [], // Array to store recommended recipes
   addRecipe: (newRecipe) =>
     set((state) => ({
       recipes: [...state.recipes, newRecipe],
@@ -31,6 +33,27 @@ const useRecipeStore = create((set) => ({
       ),
     }));
   },
+  
+  // Action to add a recipe to favorites
+  addFavorite: (recipeId) => set(state => {
+    if (!state.favorites.includes(recipeId)) {
+      return { favorites: [...state.favorites, recipeId] };
+    }
+    return state;
+  }),
+
+  // Action to remove a recipe from favorites
+  removeFavorite: (recipeId) => set(state => ({
+    favorites: state.favorites.filter(id => id !== recipeId),
+  })),
+
+  // Action to generate personalized recommendations
+  generateRecommendations: () => set(state => {
+    const recommended = state.recipes.filter(recipe =>
+      state.favorites.includes(recipe.id) && Math.random() > 0.5
+    );
+    return { recommendations: recommended };
+  }),
 
 }));
 
