@@ -66,4 +66,18 @@ const App = () => {
   );
 };
 
+// Task 2 App.jsx updated
+import SearchBar from './components/SearchBar';
+import RecipeList from './components/RecipeList';
+
+const App = () => {
+  return (
+    <div className="app">
+      <h1>Recipe Sharing App</h1>
+      <SearchBar />
+      <RecipeList />
+    </div>
+  );
+};
+
 export default App
