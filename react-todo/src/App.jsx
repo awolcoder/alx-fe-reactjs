@@ -32,13 +32,13 @@
 //   )
 // }
 
-// src/App.jsx
+// src/App.js
 import React from 'react';
 import TodoList from './TodoList';
 
-function App() {
+const App = () => {
     return (
-        <div className="App">
+        <div>
             <TodoList />
         </div>
     );
