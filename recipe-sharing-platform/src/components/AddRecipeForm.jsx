@@ -8,17 +8,24 @@ const AddRecipeForm = () => {
   const [preparationSteps, setPreparationSteps] = useState('');
   const [errors, setErrors] = useState({}); // State for validation errors
 
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevents default form submission behavior
-
-    // Validation logic
-    const formErrors = {};
+  // Validation function
+  const validate = () => {
+    const formErrors = {}; // Object to store errors
     if (!title) formErrors.title = "Title is required"; // Title validation
     if (!ingredients) formErrors.ingredients = "Ingredients are required"; // Ingredients validation
     if (!preparationSteps) formErrors.preparationSteps = "Preparation steps are required"; // Preparation steps validation
 
-    // If errors exist, set them in the state
+    return formErrors; // Return the errors object
+  };
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevents default form submission behavior
+
+    // Validate the form
+    const formErrors = validate();
+    
+    // If there are validation errors, set them in the state
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
     } else {
