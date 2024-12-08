@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
     // Load the recipe data
-    fetch("/src/data.json")
+    fetch("/src/data.json") // Adjust if necessary for actual relative path
       .then((response) => response.json())
       .then((data) => setRecipes(data))
       .catch((error) => console.error("Error loading data:", error));
@@ -28,9 +29,13 @@ const HomePage = () => {
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-2">{recipe.title}</h2>
               <p className="text-gray-600">{recipe.summary}</p>
-              <button className="mt-4 text-blue-500 hover:underline">
+              {/* Use Link to navigate */}
+              <Link
+                to={`/recipe/${recipe.id}`}
+                className="mt-4 text-blue-500 hover:underline block"
+              >
                 View Recipe
-              </button>
+              </Link>
             </div>
           </div>
         ))}
