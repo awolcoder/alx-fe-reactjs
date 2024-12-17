@@ -1,17 +1,14 @@
 import React from "react";
-import './App.css';
+import SearchInput from "./components/SearchInput";
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <header>
-        <h1>GitHub User Search</h1>
-      </header>
-      <main>
-        <p>Welcome to the GitHub User Search Application!</p>
-      </main>
+    <div style={{ padding: "20px", textAlign: "center" }}>
+      <h1>GitHub User Search Application</h1>
+      <p>Start searching for GitHub profiles here!</p>
+      <SearchInput />
     </div>
   );
-};
+}
 
 export default App;
