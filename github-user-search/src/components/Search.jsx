@@ -5,23 +5,23 @@ const Search = () => {
     const [username, setUsername] = useState('');
     const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
+    const [error, setError] = useState(false);
 
-    const handleInputChange = (e) => {
-        setUsername(e.target.value);
+    const handleInputChange = (event) => {
+        setUsername(event.target.value);
     };
 
-    const handleFormSubmit = async (e) => {
-        e.preventDefault();
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
         setLoading(true);
-        setError('');
+        setError(false);
         setUserData(null);
 
         try {
             const data = await fetchUserData(username);
             setUserData(data);
-        } catch (err) {
-            setError("Looks like we can't find the user.");
+        } catch (error) {
+            setError(true);
         } finally {
             setLoading(false);
         }
@@ -32,22 +32,21 @@ const Search = () => {
             <form onSubmit={handleFormSubmit}>
                 <input
                     type="text"
+                    placeholder="Search GitHub username"
                     value={username}
                     onChange={handleInputChange}
-                    placeholder="Search GitHub username"
-                    required
                 />
                 <button type="submit">Search</button>
             </form>
 
             {loading && <p>Loading...</p>}
-            {error && <p>{error}</p>}
+            {error && <p>Looks like we cant find the user</p>}
             {userData && (
                 <div>
-                    <img src={userData.avatar_url} alt={`${userData.login}'s avatar`} width="100" />
-                    <p>{userData.name}</p>
+                    <img src={userData.avatar_url} alt={`${userData.login}'s avatar`} />
+                    <p>Name: {userData.name || 'No name available'}</p>
                     <a href={userData.html_url} target="_blank" rel="noopener noreferrer">
-                        Visit Profile
+                        View Profile
                     </a>
                 </div>
             )}
