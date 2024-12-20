@@ -1,4 +1,3 @@
-// src/components/Services.jsx
 function Services() {
     return (
       <div style={{ padding: '20px' }}>
