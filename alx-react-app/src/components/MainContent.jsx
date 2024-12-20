@@ -1,4 +1,3 @@
-// src/components/MainContent.jsx
 function MainContent() {
     return (
         <main>
