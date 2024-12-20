@@ -1,4 +1,3 @@
-// src/components/DeleteRecipeButton.jsx
 import { useRecipeStore } from '../components/recipeStore';
 import { useNavigate } from 'react-router-dom';
 
